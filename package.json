@@ -1,0 +1,30 @@
+{
+  "name": "yang-sprotty",
+  "version": "0.0.1",
+  "description": "sprotty diagrams for the Yang DSL",
+  "author": "typefox.io",
+  "license": "Apache-2.0",
+  "keywords": [
+    "sprotty", "yang", "diagram"
+  ],
+  "dependencies": {
+    "sprotty": "0.1.2"
+  },
+  "scripts": {
+    "clean": "rimraf lib && rimraf node_modules",
+    "lint": "tslint -c ../tslint.json --project ./tsconfig.json",
+    "build": "tsc && yarn run lint",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.2.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1"
+  },
+  "files": [
+    "lib",
+    "src",
+    "build"
+  ]
+}

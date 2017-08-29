@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "outDir": "lib",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "typeRoots": [
+      "../node_modules/@types", "./typings"
+    ],
+    "jsx": "react",
+    "sourceMap": true,
+    "reactNamespace": "JSX"
+  },
+  "include": [
+    "src", "./typings"
+  ],
+  "files": [
+    "../theia/packages/monaco/src/typings/monaco/index.d.ts",
+    "../node_modules/@types/node/index.d.ts"
+  ]
+}
