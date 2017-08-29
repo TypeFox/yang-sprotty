@@ -25,6 +25,7 @@
   "files": [
     "lib",
     "src",
-    "build"
+    "build",
+    "css"
   ]
 }
