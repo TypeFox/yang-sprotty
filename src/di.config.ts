@@ -1,3 +1,4 @@
+import { } from '../../sprotty/client/lib/model-source/di.config';
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
@@ -37,7 +38,8 @@ import {
     openModule,
     ExpandButtonHandler,
     ExpandButtonView,
-    buttonModule
+    buttonModule,
+    modelSourceModule
 } from 'sprotty/lib'
 
 const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -50,7 +52,8 @@ const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) =>
 export default function createContainer(widgetId: string): Container {
     const container = new Container()
     container.load(defaultModule, selectModule, moveModule, boundsModule, undoRedoModule, viewportModule,
-        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, yangDiagramModule)
+        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule,
+        yangDiagramModule)
 //        container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
     overrideViewerOptions(container, {
         needsClientLayout: true,
