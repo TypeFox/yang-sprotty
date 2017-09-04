@@ -1,4 +1,3 @@
-import { } from '../../sprotty/client/lib/model-source/di.config';
 /*
  * Copyright (C) 2017 TypeFox and others.
  *
