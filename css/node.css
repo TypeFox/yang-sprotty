@@ -8,21 +8,8 @@
 /* sprotty SVG export */
  
 .node {
-    fill: #cdc;
-    stroke: #fff;
-    stroke-width: 1;
-    font-weight: bold;
-
-    /* properties for vbox */
-    line-height: 10px;
-    text-align: center;
-}
-
-.comp {
-    padding: 10px;
-    line-height: 3px;
-    font-weight: normal;
-    text-align: left;
+    stroke: var(--yang-fg-color);
+    stroke-width: var(--yang-node-stroke-width);
 }
 
 .graph {
@@ -39,12 +26,11 @@
 .heading.label {
     font-weight: bold;
     font-size: 0.8em;
-
 }
 
 .button {
     stroke-width: 0;
-    fill: #fff;
+    fill: var(--yang-fg-color);
 }
 
 .missing {

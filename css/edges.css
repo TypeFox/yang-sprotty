@@ -9,12 +9,12 @@
  
 .edge {
     fill: none;
-    stroke: #729A9A;
+    stroke: var(--yang-edge-color);
     stroke-width: 2px;
 }
 
 .edge.composition {
-    fill: #729A9A;
+    fill: var(--yang-edge-color);
 }
 
 .edge.dashed {

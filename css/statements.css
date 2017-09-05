@@ -8,28 +8,81 @@
 
 /* sprotty SVG export */
 
-.list,
+.module circle.tag,
+.module .comp text.classHeader {
+    fill: var(--yang-module-header-fg)   
+}
+.module .comp rect,
+.module text.tag {
+    fill: var(--yang-module-header-bg)
+}
+.module {
+    fill: var(--yang-module-comp-bg)
+}
+.module .comp .text.label {
+    fill: var(--yang-module-comp-fg)
+}
+
 .list circle.tag,
-.list .comp text.classHeader,
-.container,
+.list .comp text.classHeader {
+    fill: var(--yang-list-header-fg)   
+}
+.list .comp rect,
+.list text.tag {
+    fill: var(--yang-list-header-bg)
+}
+.list {
+    fill: var(--yang-list-comp-bg)
+}
+.list .comp .text.label {
+    fill: var(--yang-list-comp-fg)
+}
+
 .container circle.tag,
 .container .comp text.classHeader {
-    fill: #9AB6B6;
+    fill: var(--yang-container-header-fg)   
+}
+.container .comp rect,
+.container text.tag {
+    fill: var(--yang-container-header-bg)
+}
+.container {
+    fill: var(--yang-container-comp-bg)
+}
+.container .comp .text.label {
+    fill: var(--yang-container-comp-fg)
 }
 
-.moduleNode,
-.moduleNode circle.tag,
-.moduleNode .comp text.classHeader {
-    fill: #FFE9BE;
-}
 
-.augment,
+
 .augment circle.tag,
-.augment .comp text.classHeader,
-.grouping,
+.augment .comp text.classHeader {
+    fill: var(--yang-augment-header-fg)   
+}
+.augment .comp rect,
+.augment text.tag {
+    fill: var(--yang-augment-header-bg)
+}
+.augment {
+    fill: var(--yang-augment-comp-bg)
+}
+.augment .comp .text.label {
+    fill: var(--yang-augment-comp-fg)
+}
+
 .grouping circle.tag,
 .grouping .comp text.classHeader {
-    fill: #578B8B;
+    fill: var(--yang-grouping-header-fg)   
+}
+.grouping .comp rect,
+.grouping text.tag {
+    fill: var(--yang-grouping-header-bg)
+}
+.grouping {
+    fill: var(--yang-grouping-comp-bg)
+}
+.grouping .comp .text.label {
+    fill: var(--yang-grouping-comp-fg)
 }
 
 .choice,
@@ -37,20 +90,48 @@
     fill: #E79292;
 }
 
-.rpc,
-.rpc text.classHeader,
-.action,
-.action text.classHeader,
-.input,
-.input text.classHeader,
-.output,
-.output text.classHeader {
-    fill: #FFE9BE;
+.rpc text {
+    fill: var(--yang-rpc-header-fg)   
+}
+.rpc rect {
+    fill: var(--yang-rpc-header-bg)
 }
 
-.notification,
-.notification text.classHeader {
-    fill: #CE6868;
+.action text {
+    fill: var(--yang-action-header-fg)   
+}
+.action rect {
+    fill: var(--yang-action-header-bg)
+}
+
+.input circle.tag,
+.input .comp text.classHeader {
+    fill: var(--yang-input-header-fg)   
+}
+.input .comp rect,
+.input text.tag {
+    fill: var(--yang-input-header-bg)
+}
+.input {
+    fill: var(--yang-input-comp-bg)
+}
+.input .comp .text.label {
+    fill: var(--yang-input-comp-fg)
+}
+
+.output circle.tag,
+.output .comp text.classHeader {
+    fill: var(--yang-output-header-fg)   
+}
+.output .comp rect,
+.output text.tag {
+    fill: var(--yang-output-header-bg)
+}
+.output {
+    fill: var(--yang-output-comp-bg)
+}
+.output .comp .text.label {
+    fill: var(--yang-output-comp-fg)
 }
 
 .output text.tag,
@@ -58,20 +139,41 @@
     font-size: 0.6em;
 }
 
-.uses {
-    fill: #9AB6B6;
+.notification circle.tag,
+.notification .comp text.classHeader {
+    fill: var(--yang-notification-header-fg)   
+}
+.notification .comp rect,
+.notification text.tag {
+    fill: var(--yang-notification-header-bg)
+}
+.notification {
+    fill: var(--yang-notification-comp-bg)
+}
+.notification .comp .text.label {
+    fill: var(--yang-notification-comp-fg)
 }
 
-.identity,
+.uses {
+    fill: var(--yang-uses-bg);
+}
+
 .identity circle.tag,
 .identity .comp text.classHeader {
-    fill: #AD976B;
+    fill: var(--yang-identity-header-fg)   
+}
+.identity .comp rect,
+.identity text.tag {
+    fill: var(--yang-identity-header-bg)
 }
 
-.typedef,
 .typedef circle.tag,
 .typedef .comp text.classHeader {
-    fill: #725A29;
+    fill: var(--yang-typedef-header-fg)   
+}
+.typedef .comp rect,
+.typedef text.tag {
+    fill: var(--yang-typedef-header-bg)
 }
 
 text.classHeader {
@@ -88,12 +190,4 @@ text.classHeader {
     stroke: none;
     text-anchor: middle;
     dominant-baseline: central;
-}
-
-text.tag {
-    fill: black
-}
-
-.classHeader {
-    fill: black
 }

@@ -79,7 +79,7 @@ export class ChoiceNodeView extends RectangularNodeView {
         const height = Math.max(0, model.size.height * 0.5)
         const rhombStr = "M 0," + height + " l " + width + "," + height + " l " + width + ",-" + height + " l -" + width + ",-" + height + "z"
 
-        return <g class-comp="{true}" class-choice={true}>
+        return <g class-node="{true}" class-choice={true}>
             <path d={rhombStr} class-choice={true}></path>
             {context.renderChildren(model)}
         </g>
@@ -88,7 +88,7 @@ export class ChoiceNodeView extends RectangularNodeView {
 
 export class CaseNodeView extends RectangularNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
-        const vnode = <g class-comp="{true}">
+        const vnode = <g class-node="{true}">
             <rect class-body={true} class-selected={node.selected}
                   x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={node.size.width * 0.5} ry={10}/>
             {context.renderChildren(node)}
@@ -100,7 +100,7 @@ export class CaseNodeView extends RectangularNodeView {
 
 export class UsesNodeView extends CaseNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
-        const vnode = <g>
+        const vnode = <g class-node={true}>
             <rect class-body={true} class-selected={node.selected}
                   x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={node.size.height * 0.5} ry={node.size.height * 0.5}/>
             {context.renderChildren(node)}

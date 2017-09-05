@@ -8,14 +8,14 @@
 /* sprotty SVG export */
  
 .module {
-    fill: #333;
-    stroke: #fff;
+    fill: var(--yang-bg-color);
+    stroke: var(--yang-fg-color);
     stroke-width: 2;
 }
 
 .module > .comp > .label {
     font-weight: normal;
-    fill: #fff;
+    fill: var(--yang-fg-color);
     white-space: nowrap;
     font-size: medium;
 }
@@ -32,4 +32,8 @@
 .module .note.mouseover .front,
 .module .note.mouseover .noteEdge {
     fill: #e2c87a;
+}
+
+body {
+    background-color: var(--yang-bg-color);
 }
