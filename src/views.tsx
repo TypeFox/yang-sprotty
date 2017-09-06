@@ -32,6 +32,10 @@ export class ClassNodeView extends RectangularNodeView {
         setAttr(vnode, 'class', node.cssClass)
         return vnode
     }
+
+    getStrokeWidth(node: YangNode): number {
+        return 1
+    }
 }
 
 export class HeaderCompartmentView implements IView {
@@ -71,6 +75,10 @@ export class ModuleNodeView extends RectangularNodeView {
             {context.renderChildren(node)}
         </g>
     }
+
+    getStrokeWidth(node: YangNode): number {
+        return 1
+    }
 }
 
 export class ChoiceNodeView extends RectangularNodeView {
@@ -84,6 +92,10 @@ export class ChoiceNodeView extends RectangularNodeView {
             {context.renderChildren(model)}
         </g>
     }
+
+    getStrokeWidth(node: YangNode): number {
+        return 1
+    }
 }
 
 export class CaseNodeView extends RectangularNodeView {
@@ -95,6 +107,10 @@ export class CaseNodeView extends RectangularNodeView {
         </g>
         setAttr(vnode, 'class', 'case')
         return vnode
+    }
+
+    getStrokeWidth(node: YangNode): number {
+        return 1
     }
 }
 
@@ -117,6 +133,10 @@ export class NoteView extends RectangularNodeView {
             <path class-noteEdge={true} d="M 15,0 l 0,10 l 10,0 Z" fill="#FFCC40"/>
         </g>
     }
+
+    getStrokeWidth(node: YangNode): number {
+        return 1
+    }
 }
 
 export class CompositionEdgeView extends PolylineEdgeView {
@@ -129,6 +149,12 @@ export class CompositionEdgeView extends PolylineEdgeView {
             <path class-edge={true} class-composition={true} d={rhombStr}
                   transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
+    }
+
+    static readonly SOURCE_CORRECTION = Math.sqrt(1 * 1 + 2 * 2)
+
+    protected getSourceAnchorCorrection(edge: SEdge): number {
+        return CompositionEdgeView.SOURCE_CORRECTION
     }
 }
 
@@ -153,6 +179,12 @@ export class ImportEdgeView extends DashedEdgeView {
                   transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
     }
+
+    static readonly SOURCE_CORRECTION = Math.sqrt(1 * 1 + 2.5 * 2.5)
+
+    protected getSourceAnchorCorrection(edge: SEdge): number {
+        return CompositionEdgeView.SOURCE_CORRECTION
+    }
 }
 
 export class ArrowEdgeView extends PolylineEdgeView {
@@ -164,6 +196,12 @@ export class ArrowEdgeView extends PolylineEdgeView {
                   transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
     }
+
+    static readonly TARGET_CORRECTION = Math.sqrt(1 * 1 + 2.5 * 2.5)
+
+    protected getTargetAnchorCorrection(edge: SEdge): number {
+        return ArrowEdgeView.TARGET_CORRECTION
+    }
 }
 
 export class DashedArrowEdgeView extends DashedEdgeView {
@@ -174,5 +212,11 @@ export class DashedArrowEdgeView extends DashedEdgeView {
             <path class-edge={true} d="M 10,-4 L 0,0 L 10,4"
                   transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
+    }
+
+    static readonly TARGET_CORRECTION = Math.sqrt(1 * 1 + 2.5 * 2.5)
+
+    protected getTargetAnchorCorrection(edge: SEdge): number {
+        return DashedArrowEdgeView.TARGET_CORRECTION
     }
 }
