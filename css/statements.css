@@ -22,6 +22,9 @@
 .module .comp .text.label {
     fill: var(--yang-module-comp-fg)
 }
+.moduleNode {
+    stroke: var(--yang-module-stroke)
+}
 
 .list circle.tag,
 .list .comp text.classHeader {
@@ -36,6 +39,9 @@
 }
 .list .comp .text.label {
     fill: var(--yang-list-comp-fg)
+}
+.list {
+    stroke: var(--yang-list-stroke)
 }
 
 .container circle.tag,
@@ -52,8 +58,9 @@
 .container .comp .text.label {
     fill: var(--yang-container-comp-fg)
 }
-
-
+.container {
+    stroke: var(--yang-container-stroke)
+}
 
 .augment circle.tag,
 .augment .comp text.classHeader {
@@ -68,6 +75,9 @@
 }
 .augment .comp .text.label {
     fill: var(--yang-augment-comp-fg)
+}
+.augment {
+    stroke: var(--yang-augment-stroke)
 }
 
 .grouping circle.tag,
@@ -84,10 +94,14 @@
 .grouping .comp .text.label {
     fill: var(--yang-grouping-comp-fg)
 }
+.grouping {
+    stroke: var(--yang-grouping-stroke)
+}
 
 .choice,
 .case {
-    fill: #E79292;
+    fill: var(--yang-choice-bg);
+    stroke: var(--yang-choice-stroke);
 }
 
 .rpc text {
@@ -96,12 +110,18 @@
 .rpc rect {
     fill: var(--yang-rpc-header-bg)
 }
+.rpc {
+    stroke: var(--yang-rpc-stroke)
+}
 
 .action text {
     fill: var(--yang-action-header-fg)   
 }
 .action rect {
     fill: var(--yang-action-header-bg)
+}
+.action {
+    stroke: var(--yang-action-stroke)
 }
 
 .input circle.tag,
@@ -118,6 +138,10 @@
 .input .comp .text.label {
     fill: var(--yang-input-comp-fg)
 }
+.input {
+    stroke: var(--yang-input-stroke)
+}
+
 
 .output circle.tag,
 .output .comp text.classHeader {
@@ -132,6 +156,9 @@
 }
 .output .comp .text.label {
     fill: var(--yang-output-comp-fg)
+}
+.output {
+    stroke: var(--yang-output-stroke)
 }
 
 .output text.tag,
@@ -153,9 +180,13 @@
 .notification .comp .text.label {
     fill: var(--yang-notification-comp-fg)
 }
+.notification {
+    stroke: var(--yang-notification-stroke)
+}
 
 .uses {
     fill: var(--yang-uses-bg);
+    stroke: var(--yang-uses-stroke);
 }
 
 .identity circle.tag,
@@ -166,6 +197,9 @@
 .identity text.tag {
     fill: var(--yang-identity-header-bg)
 }
+.identity {
+    stroke: var(--yang-identity-stroke)
+}
 
 .typedef circle.tag,
 .typedef .comp text.classHeader {
@@ -174,6 +208,9 @@
 .typedef .comp rect,
 .typedef text.tag {
     fill: var(--yang-typedef-header-bg)
+}
+.typedef {
+    stroke: var(--yang-typedef-stroke)
 }
 
 text.classHeader {
