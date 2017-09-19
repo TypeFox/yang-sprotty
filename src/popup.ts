@@ -7,6 +7,7 @@
 
 import { SModelElementSchema, SModelRootSchema, RequestPopupModelAction, PreRenderedElementSchema } from "sprotty/lib"
 
+// TODO delete?
 export function popupModelFactory(request: RequestPopupModelAction, element?: SModelElementSchema): SModelRootSchema | undefined {
     if (element !== undefined && (element.type === 'node:class' || element.type === 'node:note')) {
         return {

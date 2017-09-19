@@ -13,11 +13,11 @@ import {
     PolylineEdgeView,
     angle,
     Point,
-    toDegrees, IView, setAttr, SLabel
+    toDegrees, IView, setAttr
 } from "sprotty/lib"
 import { VNode } from "snabbdom/vnode"
 import * as snabbdom from 'snabbdom-jsx';
-import { YangNode, ModuleNode } from "./yang-models"
+import { YangNode, ModuleNode, Tag } from "./yang-models"
 
 const JSX = {createElement: snabbdom.svg}
 
@@ -53,16 +53,12 @@ export class HeaderCompartmentView implements IView {
 }
 
 export class TagView implements IView {
-    render(element: SLabel, context: RenderingContext): VNode {
-        const radius = this.getRadius()
+    render(element: Tag, context: RenderingContext): VNode {
+        const radius = 0.5 * element.size.width
         return <g>
             <circle class-tag={true} r={radius} cx={radius} cy={radius}></circle>
-            <text class-tag={true} x={radius} y={radius}>{element.text}</text>
+            {context.renderChildren(element)}
         </g>
-    }
-
-    getRadius() {
-        return 12
     }
 }
 
