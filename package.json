@@ -14,14 +14,13 @@
     "clean": "rimraf lib && rimraf node_modules",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json",
     "build": "tsc && yarn run lint",
-    "watch": "tsc-watch"
+    "watch": "tsc -w -p ./tsconfig.json"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
     "ts-node": "^3.2.0",
     "tslint": "^5.5.0",
-    "typescript": "^2.4.1",
-    "tsc-watch": "^1.0.5"    
+    "typescript": "^2.4.1"   
   },
   "files": [
     "lib",
