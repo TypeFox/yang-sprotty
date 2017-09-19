@@ -8,8 +8,8 @@
 /* sprotty SVG export */
  
 .node {
-    stroke: var(--yang-fg-color);
-    stroke-width: var(--yang-node-stroke-width);
+    stroke: #ffffff;
+    stroke-width: 1;
 }
 
 .graph {
@@ -30,7 +30,7 @@
 
 .button {
     stroke-width: 0;
-    fill: var(--yang-fg-color);
+    fill: #ffffff;
 }
 
 .missing {

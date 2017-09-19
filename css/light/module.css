@@ -8,14 +8,14 @@
 /* sprotty SVG export */
  
 .module {
-    fill: var(--yang-bg-color);
-    stroke: var(--yang-fg-color);
+    fill: #ffffff;
+    stroke: #000000;
     stroke-width: 2;
 }
 
 .module > .comp > .label {
     font-weight: normal;
-    fill: var(--yang-fg-color);
+    fill: #000000;
     white-space: nowrap;
     font-size: medium;
 }
@@ -35,5 +35,5 @@
 }
 
 body {
-    background-color: var(--yang-bg-color);
+    background-color: #ffffff;
 }
