@@ -98,7 +98,7 @@ export class CaseNodeView extends RectangularNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-node="{true}">
             <rect class-body={true} class-selected={node.selected}
-                  x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={node.size.width * 0.5} ry={10}/>
+                  x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={Math.max(node.size.width * 0.5, 0)} ry={10}/>
             {context.renderChildren(node)}
         </g>
         setAttr(vnode, 'class', 'case')
@@ -114,7 +114,7 @@ export class UsesNodeView extends CaseNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-node={true}>
             <rect class-body={true} class-selected={node.selected}
-                  x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={node.size.height * 0.5} ry={node.size.height * 0.5}/>
+                  x={0} y={0} width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)} rx={Math.max(node.size.height * 0.5, 0)} ry={Math.max(node.size.height * 0.5, 0)}/>
             {context.renderChildren(node)}
         </g>
         setAttr(vnode, 'class', node.cssClass)
