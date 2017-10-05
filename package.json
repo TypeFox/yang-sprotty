@@ -11,9 +11,10 @@
     "sprotty": "0.1.2"
   },
   "scripts": {
+    "prepare": "yarn run clean && yarn build",
     "clean": "rimraf lib && rimraf node_modules",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json",
-    "build": "tsc && yarn run lint",
+    "build": "tsc && yarn lint",
     "watch": "tsc -w -p ./tsconfig.json"
   },
   "devDependencies": {
