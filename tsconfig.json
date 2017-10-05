@@ -24,9 +24,6 @@
     "reactNamespace": "JSX"
   },
   "include": [
-    "src", "./typings"
-  ],
-  "files": [
-    "../node_modules/@types/node/index.d.ts"
+    "src"
   ]
 }
