@@ -14,12 +14,12 @@
     min-width: initial;
 }
 
-.infoRow {
+.sprotty-infoRow {
     display: flex;
     font-size: small;
 }
 
-.infoTitle {
+.sprotty-infoTitle {
     width: 130px;
     font-weight: bold;
 }

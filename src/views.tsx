@@ -23,7 +23,7 @@ const JSX = {createElement: snabbdom.svg}
 
 export class ClassNodeView extends RectangularNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
-        const vnode = <g class-node={true}>
+        const vnode = <g class-sprotty-node={true}>
             <rect class-selected={node.selected} class-mouseover={node.hoverFeedback}
                   x={0} y={0}
                   width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)}/>
@@ -64,7 +64,7 @@ export class TagView implements IView {
 
 export class ModuleNodeView extends RectangularNodeView {
     render(node: ModuleNode, context: RenderingContext): VNode {
-        return <g class-node={true} class-module={true} class-mouseover={node.hoverFeedback}>
+        return <g class-sprotty-node={true} class-module={true} class-mouseover={node.hoverFeedback}>
             <rect class-body={true} class-selected={node.selected}
                   x={0} y={0} rx="5" ry="5"
                   width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)}/>
@@ -83,7 +83,7 @@ export class ChoiceNodeView extends RectangularNodeView {
         const height = Math.max(0, model.size.height * 0.5)
         const rhombStr = "M 0," + height + " l " + width + "," + height + " l " + width + ",-" + height + " l -" + width + ",-" + height + "z"
 
-        return <g class-node="{true}" class-choice={true}>
+        return <g class-sprotty-node="{true}" class-choice={true}>
             <path d={rhombStr} class-choice={true}></path>
             {context.renderChildren(model)}
         </g>
@@ -96,7 +96,7 @@ export class ChoiceNodeView extends RectangularNodeView {
 
 export class CaseNodeView extends RectangularNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
-        const vnode = <g class-node="{true}">
+        const vnode = <g class-sprotty-node="{true}">
             <rect class-body={true} class-selected={node.selected}
                   x={0} y={0}
                   width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)}
@@ -114,7 +114,7 @@ export class CaseNodeView extends RectangularNodeView {
 
 export class UsesNodeView extends CaseNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
-        const vnode = <g class-node={true}>
+        const vnode = <g class-sprotty-node={true}>
             <rect class-body={true} class-selected={node.selected}
                   x={0} y={0}
                   width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)}
@@ -146,7 +146,7 @@ export class CompositionEdgeView extends PolylineEdgeView {
         const r = 6
         const rhombStr = "M 0,0 l" + r + "," + (r / 2) + " l" + r + ",-" + (r / 2) + " l-" + r + ",-" + (r / 2) + " l-" + r + "," + (r / 2) + " Z"
         return [
-            <path class-edge={true} class-composition={true} d={rhombStr}
+            <path class-sprotty-edge={true} class-composition={true} d={rhombStr}
                   transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
     }
@@ -166,7 +166,7 @@ export class DashedEdgeView extends PolylineEdgeView {
             const p = segments[i]
             path += ` L ${p.x},${p.y}`
         }
-        return <path class-edge={true} class-dashed={true} d={path}/>
+        return <path class-sprotty-edge={true} class-dashed={true} d={path}/>
     }
 }
 
@@ -175,7 +175,7 @@ export class ImportEdgeView extends DashedEdgeView {
         const p1 = segments[0]
         const p2 = segments[1]
         return [
-            <path class-edge={true} d="M 10,-4 L 0,0 L 10,4"
+            <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
                   transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
     }
@@ -192,7 +192,7 @@ export class ArrowEdgeView extends PolylineEdgeView {
         const p1 = segments[segments.length - 2]
         const p2 = segments[segments.length - 1]
         return [
-            <path class-edge={true} d="M 10,-4 L 0,0 L 10,4"
+            <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
                   transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
     }
@@ -209,7 +209,7 @@ export class DashedArrowEdgeView extends DashedEdgeView {
         const p1 = segments[segments.length - 2]
         const p2 = segments[segments.length - 1]
         return [
-            <path class-edge={true} d="M 10,-4 L 0,0 L 10,4"
+            <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
                   transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
     }

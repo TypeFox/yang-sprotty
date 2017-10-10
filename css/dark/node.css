@@ -5,33 +5,33 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-.node {
+.sprotty-node {
     stroke: #ffffff;
     stroke-width: 1;
 }
 
-.graph {
+.sprotty-graph {
     font-size: 15pt;
 }
 
-.label {
+.sprotty-label {
     stroke-width: 0;
     fill: #000;
     font-weight: inherit;
     text-align: inherit;
 }
 
-.heading.label {
+.sprotty-label.heading {
     font-weight: bold;
     font-size: 0.8em;
 }
 
-.button {
+.sprotty-button {
     stroke-width: 0;
     fill: #ffffff;
 }
 
-.missing {
+.sprotty-missing {
     stroke-width: 1;
     stroke: #f00;
     fill: #f00;
