@@ -17,6 +17,7 @@
 .sprotty-label {
     stroke-width: 0;
     fill: #000;
+    font-size: 0.6em;
     font-weight: inherit;
     text-align: inherit;
 }

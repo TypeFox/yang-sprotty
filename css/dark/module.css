@@ -11,7 +11,7 @@
     stroke-width: 2;
 }
 
-.module > .comp > .label {
+.module > .comp > .sprotty-label {
     font-weight: normal;
     fill: #ffffff;
     white-space: nowrap;
