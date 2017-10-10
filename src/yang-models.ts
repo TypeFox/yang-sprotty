@@ -6,8 +6,8 @@
  */
 
 import {
-    boundsFeature, fadeFeature, hoverFeedbackFeature, popupFeature, SCompartment, selectFeature, layoutFeature,
-    SNode, SLabel, SShapeElement, expandFeature, Expandable, openFeature
+    boundsFeature, fadeFeature, hoverFeedbackFeature, popupFeature, SCompartment, selectFeature, layoutContainerFeature,
+    layoutableChildFeature, SNode, SLabel, SShapeElement, expandFeature, Expandable, openFeature
 } from "sprotty/lib"
 
 export class YangNode extends SNode {
@@ -16,7 +16,7 @@ export class YangNode extends SNode {
 
     hasFeature(feature: symbol): boolean {
         return feature === selectFeature || feature === boundsFeature
-            || feature === layoutFeature || feature === fadeFeature || feature === hoverFeedbackFeature
+            || feature === layoutContainerFeature || feature === fadeFeature || feature === hoverFeedbackFeature
             || feature === popupFeature || (feature === openFeature && this.trace !== undefined)
     }
 }
@@ -49,6 +49,6 @@ export class Tag extends SShapeElement {
     }
 
     hasFeature(feature: symbol): boolean {
-        return feature === boundsFeature || feature === layoutFeature || feature === fadeFeature
+        return feature === boundsFeature || feature === layoutContainerFeature || feature === layoutableChildFeature || feature === fadeFeature
     }
 }
