@@ -43,7 +43,7 @@ import {
 
 const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
-    rebind(TYPES.LogLevel).toConstantValue(LogLevel.log)
+    rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn)
     rebind(TYPES.IModelFactory).to(YangDiagramFactory).inSingletonScope()
     bind(TYPES.PopupModelFactory).toConstantValue(popupModelFactory)
 })
