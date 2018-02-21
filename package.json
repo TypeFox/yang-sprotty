@@ -14,7 +14,7 @@
   },
   "scripts": {
     "prepare": "yarn run clean && yarn build",
-    "clean": "rimraf lib && rimraf node_modules",
+    "clean": "rimraf lib \"node_modules/!(rimraf|.bin)\"",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json",
     "build": "tsc && yarn lint",
     "watch": "tsc -w -p ./tsconfig.json"
