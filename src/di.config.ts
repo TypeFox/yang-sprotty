@@ -4,48 +4,52 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
-
-import { Container, ContainerModule } from "inversify"
-import {
-    ClassNodeView, CompositionEdgeView, DashedEdgeView, ImportEdgeView, ModuleNodeView, NoteView,
-    ArrowEdgeView, ChoiceNodeView, CaseNodeView, TagView, HeaderCompartmentView, DashedArrowEdgeView, UsesNodeView
-} from "./views"
-import { YangDiagramFactory } from "./model-factory"
-import { popupModelFactory } from "./popup"
-import {
-    boundsModule,
-    ConsoleLogger,
-    defaultModule,
-    exportModule,
-    hoverModule,
-    HtmlRootView,
-    LogLevel,
-    moveModule,
-    overrideViewerOptions,
-    PolylineEdgeView,
-    PreRenderedView,
-    SCompartmentView,
-    selectModule,
-    SGraphView,
-    SLabelView,
-    TYPES,
-    undoRedoModule,
-    viewportModule,
-    ViewRegistry,
-    expandModule,
-    fadeModule,
-    openModule,
-    ExpandButtonHandler,
-    ExpandButtonView,
-    buttonModule,
-    modelSourceModule
-} from 'sprotty/lib'
+import { Container, ContainerModule } from "inversify";
+import { ConsoleLogger, ExpandButtonHandler, ExpandButtonView, HtmlRoot,
+        HtmlRootView, LogLevel, PolylineEdgeView, PreRenderedElement,
+        PreRenderedView, SCompartment, SCompartmentView, SEdge, SGraph,
+        SGraphView, SLabel, SLabelView, TYPES, boundsModule,
+        buttonModule, configureModelElement, defaultModule, expandModule,
+        exportModule, fadeModule, hoverModule, modelSourceModule, moveModule,
+        openModule, overrideViewerOptions, selectModule, undoRedoModule,
+        viewportModule, SButton } from 'sprotty/lib';
+import { popupModelFactory } from "./popup";
+import { ArrowEdgeView, CaseNodeView, ChoiceNodeView, ClassNodeView,
+    CompositionEdgeView, DashedArrowEdgeView, DashedEdgeView, HeaderCompartmentView,
+    ImportEdgeView, ModuleNodeView, NoteView, TagView, UsesNodeView } from "./views";
+import { ModuleNode, Tag, YangLabel, YangNode } from "./yang-models";
+import { YangModelFactory } from "./model-factory";
 
 const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn)
-    rebind(TYPES.IModelFactory).to(YangDiagramFactory).inSingletonScope()
+    rebind(TYPES.IModelFactory).to(YangModelFactory).inSingletonScope()
     bind(TYPES.PopupModelFactory).toConstantValue(popupModelFactory)
+    const context = { bind, unbind, isBound, rebind };
+    configureModelElement(context, 'graph', SGraph, SGraphView);
+    configureModelElement(context, 'node:class', YangNode, ClassNodeView)
+    configureModelElement(context, 'node:module', ModuleNode, ModuleNodeView)
+    configureModelElement(context, 'node:choice', YangNode, ChoiceNodeView)
+    configureModelElement(context, 'node:case', YangNode, CaseNodeView)
+    configureModelElement(context, 'node:pill', YangNode, UsesNodeView)
+    configureModelElement(context, 'node:note', YangNode, NoteView)
+    configureModelElement(context, 'label:heading', SLabel, SLabelView)
+    configureModelElement(context, 'label:text', SLabel, SLabelView)
+    configureModelElement(context, 'ylabel:text', YangLabel, SLabelView)
+    configureModelElement(context, 'label:classHeader', SLabel, SLabelView)
+    configureModelElement(context, 'tag', Tag, TagView)
+    configureModelElement(context, 'label:tag', SLabel, SLabelView)
+    configureModelElement(context, 'comp:comp', SCompartment, SCompartmentView)
+    configureModelElement(context, 'comp:classHeader', SCompartment, HeaderCompartmentView)
+    configureModelElement(context, 'edge:straight', SEdge, PolylineEdgeView)
+    configureModelElement(context, 'edge:composition', SEdge, CompositionEdgeView)
+    configureModelElement(context, 'edge:dashed', SEdge, DashedEdgeView)
+    configureModelElement(context, 'edge:import', SEdge, ImportEdgeView)
+    configureModelElement(context, 'edge:uses', SEdge, DashedArrowEdgeView)
+    configureModelElement(context, 'edge:augments', SEdge, ArrowEdgeView)
+    configureModelElement(context, 'html', HtmlRoot, HtmlRootView)
+    configureModelElement(context, 'pre-rendered', PreRenderedElement, PreRenderedView)
+    configureModelElement(context, ExpandButtonHandler.TYPE, SButton, ExpandButtonView)
 })
 
 export default function createContainer(widgetId: string): Container {
@@ -53,39 +57,11 @@ export default function createContainer(widgetId: string): Container {
     container.load(defaultModule, selectModule, moveModule, boundsModule, undoRedoModule, viewportModule,
         hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule,
         yangDiagramModule)
-//        container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
+    //        container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
     overrideViewerOptions(container, {
         needsClientLayout: true,
         needsServerLayout: true,
         baseDiv: widgetId
     })
-
-    // Register views
-    const viewRegistry = container.get<ViewRegistry>(TYPES.ViewRegistry)
-    viewRegistry.register('graph', SGraphView)
-    viewRegistry.register('node:class', ClassNodeView)
-    viewRegistry.register('node:module', ModuleNodeView)
-    viewRegistry.register('node:choice', ChoiceNodeView)
-    viewRegistry.register('node:case', CaseNodeView)
-    viewRegistry.register('node:pill', UsesNodeView)
-    viewRegistry.register('node:note', NoteView)
-    viewRegistry.register('label:heading', SLabelView)
-    viewRegistry.register('label:text', SLabelView)
-    viewRegistry.register('ylabel:text', SLabelView)
-    viewRegistry.register('label:classHeader', SLabelView)
-    viewRegistry.register('tag', TagView)
-    viewRegistry.register('label:tag', SLabelView)
-    viewRegistry.register('comp:comp', SCompartmentView)
-    viewRegistry.register('comp:classHeader', HeaderCompartmentView)
-    viewRegistry.register('edge:straight', PolylineEdgeView)
-    viewRegistry.register('edge:composition', CompositionEdgeView)
-    viewRegistry.register('edge:dashed', DashedEdgeView)
-    viewRegistry.register('edge:import', ImportEdgeView)
-    viewRegistry.register('edge:uses', DashedArrowEdgeView)
-    viewRegistry.register('edge:augments', ArrowEdgeView)
-    viewRegistry.register('html', HtmlRootView)
-    viewRegistry.register('pre-rendered', PreRenderedView)
-    viewRegistry.register(ExpandButtonHandler.TYPE, ExpandButtonView)
-
     return container
 }

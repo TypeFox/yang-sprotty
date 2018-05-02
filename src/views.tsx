@@ -7,11 +7,9 @@
 
 import {
     RenderingContext,
-    RectangularNodeView,
     SEdge,
     SCompartment,
     PolylineEdgeView,
-    angle,
     Point,
     toDegrees, IView, setAttr
 } from "sprotty/lib"
@@ -21,7 +19,7 @@ import { YangNode, ModuleNode, Tag } from "./yang-models"
 
 const JSX = {createElement: snabbdom.svg}
 
-export class ClassNodeView extends RectangularNodeView {
+export class ClassNodeView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-sprotty-node={true}>
             <rect class-selected={node.selected} class-mouseover={node.hoverFeedback}
@@ -31,10 +29,6 @@ export class ClassNodeView extends RectangularNodeView {
         </g>
         setAttr(vnode, 'class', node.cssClass)
         return vnode
-    }
-
-    getStrokeWidth(node: YangNode): number {
-        return 1
     }
 }
 
@@ -62,7 +56,7 @@ export class TagView implements IView {
     }
 }
 
-export class ModuleNodeView extends RectangularNodeView {
+export class ModuleNodeView implements IView {
     render(node: ModuleNode, context: RenderingContext): VNode {
         return <g class-sprotty-node={true} class-module={true} class-mouseover={node.hoverFeedback}>
             <rect class-body={true} class-selected={node.selected}
@@ -71,13 +65,9 @@ export class ModuleNodeView extends RectangularNodeView {
             {context.renderChildren(node)}
         </g>
     }
-
-    getStrokeWidth(node: YangNode): number {
-        return 1
-    }
 }
 
-export class ChoiceNodeView extends RectangularNodeView {
+export class ChoiceNodeView implements IView {
     render(model: YangNode, context: RenderingContext): VNode {
         const width = Math.max(0, model.size.width * 0.5)
         const height = Math.max(0, model.size.height * 0.5)
@@ -88,13 +78,9 @@ export class ChoiceNodeView extends RectangularNodeView {
             {context.renderChildren(model)}
         </g>
     }
-
-    getStrokeWidth(node: YangNode): number {
-        return 1
-    }
 }
 
-export class CaseNodeView extends RectangularNodeView {
+export class CaseNodeView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-sprotty-node="{true}">
             <rect class-body={true} class-selected={node.selected}
@@ -105,10 +91,6 @@ export class CaseNodeView extends RectangularNodeView {
         </g>
         setAttr(vnode, 'class', 'case')
         return vnode
-    }
-
-    getStrokeWidth(node: YangNode): number {
-        return 1
     }
 }
 
@@ -126,16 +108,12 @@ export class UsesNodeView extends CaseNodeView {
     }
 }
 
-export class NoteView extends RectangularNodeView {
+export class NoteView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         return <g class-note={true} class-mouseover={node.hoverFeedback}>
             <path class-front={true} d="M 0,0 l 15,0 l 0,10 l 10,0 l 0,25 l -25,0 Z" fill="#FFEB8A"/>
             <path class-noteEdge={true} d="M 15,0 l 0,10 l 10,0 Z" fill="#FFCC40"/>
         </g>
-    }
-
-    getStrokeWidth(node: YangNode): number {
-        return 1
     }
 }
 
@@ -147,7 +125,7 @@ export class CompositionEdgeView extends PolylineEdgeView {
         const rhombStr = "M 0,0 l" + r + "," + (r / 2) + " l" + r + ",-" + (r / 2) + " l-" + r + ",-" + (r / 2) + " l-" + r + "," + (r / 2) + " Z"
         return [
             <path class-sprotty-edge={true} class-composition={true} d={rhombStr}
-                  transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
+                  transform={`rotate(${angle(p1, p2)} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
     }
 
@@ -176,7 +154,7 @@ export class ImportEdgeView extends DashedEdgeView {
         const p2 = segments[1]
         return [
             <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
-                  transform={`rotate(${toDegrees(angle(p1, p2))} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
+                  transform={`rotate(${angle(p1, p2)} ${p1.x} ${p1.y}) translate(${p1.x} ${p1.y})`}/>
         ]
     }
 
@@ -193,7 +171,7 @@ export class ArrowEdgeView extends PolylineEdgeView {
         const p2 = segments[segments.length - 1]
         return [
             <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
-                  transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
+                  transform={`rotate(${angle(p2, p1)} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
     }
 
@@ -210,7 +188,7 @@ export class DashedArrowEdgeView extends DashedEdgeView {
         const p2 = segments[segments.length - 1]
         return [
             <path class-sprotty-edge={true} d="M 10,-4 L 0,0 L 10,4"
-                  transform={`rotate(${toDegrees(angle(p2, p1))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
+                  transform={`rotate(${angle(p2, p1)} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}/>
         ]
     }
 
@@ -219,4 +197,8 @@ export class DashedArrowEdgeView extends DashedEdgeView {
     protected getTargetAnchorCorrection(edge: SEdge): number {
         return DashedArrowEdgeView.TARGET_CORRECTION
     }
+}
+
+export function angle(x0: Point, x1: Point): number {
+    return toDegrees(Math.atan2(x1.y - x0.y, x1.x - x0.x))
 }
