@@ -5,6 +5,9 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
+/** @jsx svg */
+import { svg } from 'snabbdom-jsx';
+
 import {
     RenderingContext,
     SEdge,
@@ -14,10 +17,7 @@ import {
     toDegrees, IView, setAttr
 } from "sprotty/lib"
 import { VNode } from "snabbdom/vnode"
-import * as snabbdom from 'snabbdom-jsx';
 import { YangNode, ModuleNode, Tag } from "./yang-models"
-
-const JSX = {createElement: snabbdom.svg}
 
 export class ClassNodeView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
