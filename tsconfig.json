@@ -17,11 +17,9 @@
       "es6",
       "dom"
     ],
-    "typeRoots": [
-      "../node_modules/@types"
-    ],
     "jsx": "react",
-    "sourceMap": true
+    "sourceMap": true,
+    "types": []
   },
   "include": [
     "src"

@@ -10,11 +10,11 @@
     "diagram"
   ],
   "dependencies": {
-    "sprotty": "0.3.0"
+    "sprotty": "^0.4.0"
   },
   "scripts": {
     "prepare": "yarn run clean && yarn build",
-    "clean": "rimraf lib \"node_modules/!(rimraf|.bin)\"",
+    "clean": "rimraf lib",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json",
     "build": "tsc && yarn lint",
     "watch": "tsc -w -p ./tsconfig.json"
@@ -23,7 +23,7 @@
     "rimraf": "^2.6.1",
     "ts-node": "^3.2.0",
     "tslint": "^5.5.0",
-    "typescript": "^2.4.1"
+    "typescript": "2.9.1"
   },
   "files": [
     "lib",
