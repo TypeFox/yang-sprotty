@@ -19,7 +19,7 @@
     ],
     "jsx": "react",
     "sourceMap": true,
-    "types": []
+    "skipLibCheck": true
   },
   "include": [
     "src"
