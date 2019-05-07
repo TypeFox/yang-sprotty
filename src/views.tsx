@@ -7,18 +7,12 @@
 
 /** @jsx svg */
 import { svg } from 'snabbdom-jsx';
-
-import {
-    RenderingContext,
-    SEdge,
-    SCompartment,
-    PolylineEdgeView,
-    Point,
-    toDegrees, IView, setAttr
-} from "sprotty/lib"
+import { injectable } from 'inversify';
+import { RenderingContext, SEdge, SCompartment, PolylineEdgeView, Point, toDegrees, IView, setAttr } from "sprotty/lib"
 import { VNode } from "snabbdom/vnode"
 import { YangNode, ModuleNode, Tag } from "./yang-models"
 
+@injectable()
 export class ClassNodeView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-sprotty-node={true}>
@@ -32,6 +26,7 @@ export class ClassNodeView implements IView {
     }
 }
 
+@injectable()
 export class HeaderCompartmentView implements IView {
     render(model: SCompartment, context: RenderingContext): VNode {
         const translate = `translate(${model.bounds.x}, ${model.bounds.y})`
@@ -46,6 +41,7 @@ export class HeaderCompartmentView implements IView {
     }
 }
 
+@injectable()
 export class TagView implements IView {
     render(element: Tag, context: RenderingContext): VNode {
         const radius = 0.5 * element.size.width
@@ -56,6 +52,7 @@ export class TagView implements IView {
     }
 }
 
+@injectable()
 export class ModuleNodeView implements IView {
     render(node: ModuleNode, context: RenderingContext): VNode {
         return <g class-sprotty-node={true} class-module={true} class-mouseover={node.hoverFeedback}>
@@ -67,6 +64,7 @@ export class ModuleNodeView implements IView {
     }
 }
 
+@injectable()
 export class ChoiceNodeView implements IView {
     render(model: YangNode, context: RenderingContext): VNode {
         const width = Math.max(0, model.size.width * 0.5)
@@ -80,6 +78,7 @@ export class ChoiceNodeView implements IView {
     }
 }
 
+@injectable()
 export class CaseNodeView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-sprotty-node="{true}">
@@ -94,6 +93,7 @@ export class CaseNodeView implements IView {
     }
 }
 
+@injectable()
 export class UsesNodeView extends CaseNodeView {
     render(node: YangNode, context: RenderingContext): VNode {
         const vnode = <g class-sprotty-node={true}>
@@ -108,6 +108,7 @@ export class UsesNodeView extends CaseNodeView {
     }
 }
 
+@injectable()
 export class NoteView implements IView {
     render(node: YangNode, context: RenderingContext): VNode {
         return <g class-note={true} class-mouseover={node.hoverFeedback}>
@@ -117,6 +118,7 @@ export class NoteView implements IView {
     }
 }
 
+@injectable()
 export class CompositionEdgeView extends PolylineEdgeView {
     protected renderAdditionals(edge: SEdge, segments: Point[], context: RenderingContext): VNode[] {
         const p1 = segments[0]
@@ -136,6 +138,7 @@ export class CompositionEdgeView extends PolylineEdgeView {
     }
 }
 
+@injectable()
 export class DashedEdgeView extends PolylineEdgeView {
     protected renderLine(edge: SEdge, segments: Point[], context: RenderingContext): VNode {
         const firstPoint = segments[0]
@@ -148,6 +151,7 @@ export class DashedEdgeView extends PolylineEdgeView {
     }
 }
 
+@injectable()
 export class ImportEdgeView extends DashedEdgeView {
     protected renderAdditionals(edge: SEdge, segments: Point[], context: RenderingContext): VNode[] {
         const p1 = segments[0]
@@ -165,6 +169,7 @@ export class ImportEdgeView extends DashedEdgeView {
     }
 }
 
+@injectable()
 export class ArrowEdgeView extends PolylineEdgeView {
     protected renderAdditionals(edge: SEdge, segments: Point[], context: RenderingContext): VNode[] {
         const p1 = segments[segments.length - 2]
@@ -182,6 +187,7 @@ export class ArrowEdgeView extends PolylineEdgeView {
     }
 }
 
+@injectable()
 export class DashedArrowEdgeView extends DashedEdgeView {
     protected renderAdditionals(edge: SEdge, segments: Point[], context: RenderingContext): VNode[] {
         const p1 = segments[segments.length - 2]
