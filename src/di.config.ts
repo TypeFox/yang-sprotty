@@ -9,22 +9,24 @@ import { ConsoleLogger, ExpandButtonHandler, ExpandButtonView, HtmlRoot,
         HtmlRootView, LogLevel, PolylineEdgeView, PreRenderedElement,
         PreRenderedView, SCompartment, SCompartmentView, SEdge, SGraph,
         SGraphView, SLabel, SLabelView, TYPES, boundsModule,
-        buttonModule, configureModelElement, defaultModule, expandModule,
-        exportModule, fadeModule, hoverModule, modelSourceModule, moveModule,
-        openModule, overrideViewerOptions, selectModule, undoRedoModule,
+        buttonModule, configureModelElement, decorationModule, defaultModule,
+        edgeEditModule, edgeLayoutModule, expandModule,
+        exportModule, fadeModule, hoverModule, labelEditModule, modelSourceModule, moveModule,
+        openModule, overrideViewerOptions, routingModule, selectModule, updateModule, undoRedoModule,
         viewportModule, SButton } from 'sprotty/lib';
-import { popupModelFactory } from "./popup";
 import { ArrowEdgeView, CaseNodeView, ChoiceNodeView, ClassNodeView,
-    CompositionEdgeView, DashedArrowEdgeView, DashedEdgeView, HeaderCompartmentView,
-    ImportEdgeView, ModuleNodeView, NoteView, TagView, UsesNodeView } from "./views";
+        CompositionEdgeView, DashedArrowEdgeView, DashedEdgeView, HeaderCompartmentView,
+        ImportEdgeView, ModuleNodeView, NoteView, TagView, UsesNodeView } from "./views";
 import { ModuleNode, Tag, YangLabel, YangNode } from "./yang-models";
 import { YangModelFactory } from "./model-factory";
+import 'sprotty/css/sprotty.css'
+import 'sprotty-theia/css/theia-sprotty.css'
+import "../css/dark/diagram.css"
 
 const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn)
     rebind(TYPES.IModelFactory).to(YangModelFactory).inSingletonScope()
-    bind(TYPES.PopupModelFactory).toConstantValue(popupModelFactory)
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', SGraph, SGraphView);
     configureModelElement(context, 'node:class', YangNode, ClassNodeView)
@@ -56,8 +58,9 @@ export default function createContainer(widgetId: string): Container {
     const container = new Container()
     container.load(defaultModule, selectModule, moveModule, boundsModule, undoRedoModule, viewportModule,
         hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule,
-        yangDiagramModule)
-    //        container.bind(TYPES.ModelSource).to(TheiaDiagramServer).inSingletonScope()
+        decorationModule, edgeEditModule, edgeLayoutModule, labelEditModule, updateModule, routingModule,
+        yangDiagramModule);
+
     overrideViewerOptions(container, {
         needsClientLayout: true,
         needsServerLayout: true,
