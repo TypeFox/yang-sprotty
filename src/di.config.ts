@@ -21,7 +21,6 @@ import { ModuleNode, Tag, YangLabel, YangNode } from "./yang-models";
 import { YangModelFactory } from "./model-factory";
 import 'sprotty/css/sprotty.css'
 import 'sprotty-theia/css/theia-sprotty.css'
-import "../css/dark/diagram.css"
 
 const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
