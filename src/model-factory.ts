@@ -1,4 +1,4 @@
-import { SGraphFactory, SModelElementSchema, SParentElement, SChildElement, getSubType, SEdge } from "sprotty/lib";
+import { SGraphFactory, SModelElementSchema, SParentElement, SChildElement, getSubType, SEdge } from "sprotty";
 
 export class YangModelFactory extends SGraphFactory {
 

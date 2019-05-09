@@ -5,7 +5,7 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-import { SModelElementSchema, SModelRootSchema, RequestPopupModelAction, PreRenderedElementSchema } from "sprotty/lib"
+import { SModelElementSchema, SModelRootSchema, RequestPopupModelAction, PreRenderedElementSchema } from "sprotty"
 
 // TODO delete?
 export function popupModelFactory(request: RequestPopupModelAction, element?: SModelElementSchema): SModelRootSchema | undefined {

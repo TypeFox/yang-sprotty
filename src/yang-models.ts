@@ -8,7 +8,7 @@
 import {
     boundsFeature, fadeFeature, hoverFeedbackFeature, popupFeature, SCompartment, selectFeature, layoutContainerFeature,
     layoutableChildFeature, SLabel, SShapeElement, expandFeature, Expandable, openFeature, RectangularNode
-} from "sprotty/lib"
+} from "sprotty"
 
 export class YangNode extends RectangularNode {
     cssClass: string

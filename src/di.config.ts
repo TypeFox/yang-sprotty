@@ -13,7 +13,7 @@ import { ConsoleLogger, ExpandButtonHandler, ExpandButtonView, HtmlRoot,
         edgeEditModule, edgeLayoutModule, expandModule,
         exportModule, fadeModule, hoverModule, labelEditModule, modelSourceModule, moveModule,
         openModule, overrideViewerOptions, routingModule, selectModule, updateModule, undoRedoModule,
-        viewportModule, SButton } from 'sprotty/lib';
+        viewportModule, SButton } from 'sprotty';
 import { ArrowEdgeView, CaseNodeView, ChoiceNodeView, ClassNodeView,
         CompositionEdgeView, DashedArrowEdgeView, DashedEdgeView, HeaderCompartmentView,
         ImportEdgeView, ModuleNodeView, NoteView, TagView, UsesNodeView } from "./views";
