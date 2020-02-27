@@ -1,19 +1,17 @@
 /*
- * Copyright (C) 2017 TypeFox and others.
+ * Copyright (C) 2017-2020 TypeFox and others.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 import { Container, ContainerModule } from "inversify";
 import { ConsoleLogger, ExpandButtonHandler, ExpandButtonView, HtmlRoot,
         HtmlRootView, LogLevel, PolylineEdgeView, PreRenderedElement,
         PreRenderedView, SCompartment, SCompartmentView, SEdge, SGraph,
-        SGraphView, SLabel, SLabelView, TYPES, boundsModule,
-        buttonModule, configureModelElement, decorationModule, defaultModule,
-        edgeEditModule, edgeLayoutModule, expandModule,
-        exportModule, fadeModule, hoverModule, labelEditModule, modelSourceModule, moveModule,
-        openModule, overrideViewerOptions, routingModule, selectModule, updateModule, undoRedoModule,
-        viewportModule, SButton } from 'sprotty';
+        SGraphView, SLabel, SLabelView, TYPES, configureModelElement,
+        overrideViewerOptions, SButton, CustomFeatures, moveFeature, openFeature,
+        expandFeature, selectFeature, loadDefaultModules } from 'sprotty';
 import { ArrowEdgeView, CaseNodeView, ChoiceNodeView, ClassNodeView,
         CompositionEdgeView, DashedArrowEdgeView, DashedEdgeView, HeaderCompartmentView,
         ImportEdgeView, ModuleNodeView, NoteView, TagView, UsesNodeView } from "./views";
@@ -25,17 +23,28 @@ const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) =>
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope()
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn)
     rebind(TYPES.IModelFactory).to(YangModelFactory).inSingletonScope()
+
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', SGraph, SGraphView);
-    configureModelElement(context, 'node:class', YangNode, ClassNodeView)
-    configureModelElement(context, 'node:module', ModuleNode, ModuleNodeView)
-    configureModelElement(context, 'node:choice', YangNode, ChoiceNodeView)
-    configureModelElement(context, 'node:case', YangNode, CaseNodeView)
-    configureModelElement(context, 'node:pill', YangNode, UsesNodeView)
-    configureModelElement(context, 'node:note', YangNode, NoteView)
+    const nodeFeatures: CustomFeatures = {
+        disable: [moveFeature],
+        enable: [openFeature]
+    };
+    configureModelElement(context, 'node:class', YangNode, ClassNodeView, nodeFeatures)
+    configureModelElement(context, 'node:choice', YangNode, ChoiceNodeView, nodeFeatures)
+    configureModelElement(context, 'node:case', YangNode, CaseNodeView, nodeFeatures)
+    configureModelElement(context, 'node:pill', YangNode, UsesNodeView, nodeFeatures)
+    configureModelElement(context, 'node:note', YangNode, NoteView, nodeFeatures)
+    const moduleFeatures: CustomFeatures = {
+        disable: [moveFeature],
+        enable: [openFeature, expandFeature]
+    };
+    configureModelElement(context, 'node:module', ModuleNode, ModuleNodeView, moduleFeatures)
     configureModelElement(context, 'label:heading', SLabel, SLabelView)
-    configureModelElement(context, 'label:text', SLabel, SLabelView)
-    configureModelElement(context, 'ylabel:text', YangLabel, SLabelView)
+    const labelFeatures: CustomFeatures = {
+        enable: [selectFeature, openFeature]
+    };
+    configureModelElement(context, 'label:text', YangLabel, SLabelView, labelFeatures)
     configureModelElement(context, 'label:classHeader', SLabel, SLabelView)
     configureModelElement(context, 'tag', Tag, TagView)
     configureModelElement(context, 'label:tag', SLabel, SLabelView)
@@ -54,10 +63,8 @@ const yangDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) =>
 
 export default function createContainer(widgetId: string): Container {
     const container = new Container()
-    container.load(defaultModule, selectModule, moveModule, boundsModule, undoRedoModule, viewportModule,
-        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule,
-        decorationModule, edgeEditModule, edgeLayoutModule, labelEditModule, updateModule, routingModule,
-        yangDiagramModule);
+    loadDefaultModules(container);
+    container.load(yangDiagramModule);
 
     overrideViewerOptions(container, {
         needsClientLayout: true,
