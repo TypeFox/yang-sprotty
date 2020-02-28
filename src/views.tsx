@@ -1,8 +1,9 @@
 /*
- * Copyright (C) 2017 TypeFox and others.
+ * Copyright (C) 2017-2020 TypeFox and others.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
 /** @jsx svg */
@@ -21,7 +22,6 @@ export class ClassNodeView implements IView {
                   width={Math.max(0, node.bounds.width)} height={Math.max(0, node.bounds.height)}/>
             {context.renderChildren(node)}
         </g>
-        setAttr(vnode, 'class', node.cssClass)
         return vnode
     }
 }
@@ -103,7 +103,6 @@ export class UsesNodeView extends CaseNodeView {
                   rx={Math.max(node.size.height * 0.5, 0)} ry={Math.max(node.size.height * 0.5, 0)}/>
             {context.renderChildren(node)}
         </g>
-        setAttr(vnode, 'class', node.cssClass)
         return vnode
     }
 }
