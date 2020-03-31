@@ -1,8 +1,8 @@
 {
   "name": "yang-sprotty",
   "version": "0.2.0",
-  "description": "sprotty diagrams for the Yang DSL",
-  "author": "typefox.io",
+  "description": "Sprotty diagrams for the Yang DSL",
+  "author": "TypeFox",
   "license": "Apache-2.0",
   "keywords": [
     "sprotty",
