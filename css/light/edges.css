@@ -11,15 +11,10 @@
     stroke-width: 2px;
 }
 
-.sprotty-edge.composition {
+path.sprotty-edge.composition {
     fill: #729A9A;
 }
 
-.sprotty-edge.dashed {
+path.sprotty-edge.dashed {
     stroke-dasharray: 5 5;
 }
-
-
-
-
-
