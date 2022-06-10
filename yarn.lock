@@ -18,6 +18,11 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@vscode/codicons@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@vscode/codicons/-/codicons-0.0.25.tgz#4ebc3e2c9e707ac46aea0becceda79f7738c647c"
+  integrity sha512-uqPhTdADjwoCh5Ufbv0M6TZiiP2mqbfJVB4grhVx1k+YeP03LDMOHBWPsNwGKn4/0S5Mq9o1w1GeftvR031Gzg==
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -32,10 +37,10 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-autocompleter@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/autocompleter/-/autocompleter-5.1.0.tgz#da80488ddf1f1d89b0a8f5d36cab24439de18ab8"
-  integrity sha512-xFZla6guwywqFJutoi5xrhAmaKw4/TU8CcLuNep/3OtiUfpNXtgzuBkkXJ6ysJIfG6MEEXFtUBg3PREN6HUVyw==
+autocompleter@^5.1.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/autocompleter/-/autocompleter-5.2.0.tgz#9ed3df262614fd557bf4d5bf67ab13cdee008203"
+  integrity sha512-CMYgI+r7RGZFaT0SvXcyBn1hb/Ne6XbjXimWQPc16LcwZgUGFBHg/Pv8honrwkTZE4DbfrD/MzqlG+Bn2u+1ng==
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -106,10 +111,10 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-file-saver@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.2.tgz#06d6e728a9ea2df2cce2f8d9e84dfcdc338ec17a"
-  integrity sha512-Wz3c3XQ5xroCxd1G8b7yL0Ehkf0TC9oYC6buPFkNnU9EnaPlifeAFCyCh+iewXTyFRcg0a6j3J7FmJsIhlhBdw==
+file-saver@^2.0.2:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -133,13 +138,6 @@ has-flag@^3.0.0:
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
 
-html-parse-stringify2@^2:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/html-parse-stringify2/-/html-parse-stringify2-2.0.1.tgz#dc5670b7292ca158b7bc916c9a6735ac8872834a"
-  integrity sha1-3FZwtyksoVi3vJFsmmc1rIhyg0o=
-  dependencies:
-    void-elements "^2.0.1"
-
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -153,10 +151,10 @@ inherits@2:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-inversify@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/inversify/-/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
-  integrity sha512-Ieh06s48WnEYGcqHepdsJUIJUXpwH5o5vodAX+DK2JA/gjy4EbEcQZxw+uFfzysmKjiLXGYwNG3qDZsKVMcINQ==
+inversify@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-5.1.1.tgz#6fbd668c591337404e005a1946bfe0d802c08730"
+  integrity sha512-j8grHGDzv1v+8T1sAQ+3boTCntFPfvxLCkNcxB1J8qA0lUN+fAlSyYd+RXKvaPRL4AGyPxViutBEJHNXOyUdFQ==
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -226,46 +224,33 @@ semver@^5.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-snabbdom-jsx@0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/snabbdom-jsx/-/snabbdom-jsx-0.4.2.tgz#e580682d60b4cc1da9898c6a0bacfcd062a0cffc"
-  integrity sha512-6akqPyuossD3niO3RCgaqAIrQ6ylBI+shzUKukIwqkNOybCmgst81khJ48BHYtEamQ7ltlFaEKjvKi3N0NPNVw==
-  dependencies:
-    snabbdom "^0.7.0"
-
-snabbdom-virtualize@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/snabbdom-virtualize/-/snabbdom-virtualize-0.7.0.tgz#31f683338b66457bded8c1e22cdd8ed438c2a387"
-  integrity sha1-MfaDM4tmRXve2MHiLN2O1DjCo4c=
-  dependencies:
-    html-parse-stringify2 "^2"
-
-snabbdom@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/snabbdom/-/snabbdom-0.7.3.tgz#27b29b41228779ae5d99696a07edaaff4912fc54"
-  integrity sha512-XNh90GQiV36hWdfSL46fIVrSSvmBuZlWk3++qaEgBeQWQJCqTphcbjTODPv8/vyZHJaB3VhePsWfGxi/zBxXyw==
-
-snabbdom@^0.7.0:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/snabbdom/-/snabbdom-0.7.4.tgz#817f07e8d3fb870960c3763b8da56f1ba982d31a"
-  integrity sha512-nnN+7uZ2NTIiu7EPMNwSDhmrYXqwlfCP/j72RdzvDPujXyvQxOW7Jl9yuLayzxMHDNWQR7FM6Pcn4wnDpKRe6Q==
+snabbdom@^3.0.3:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/snabbdom/-/snabbdom-3.5.0.tgz#e75acbdedb26ea327c75028a433ba064db0ccf6e"
+  integrity sha512-Ff5BKG18KrrPuskHJlA9aujPHqEabItaDl96l7ZZndF4zt5AYSczz7ZjjgQAX5IBd5cd25lw9NfgX21yVUJ+9g==
 
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sprotty@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.8.0.tgz#fe0b3e64aa698f7e7d6de90eb22176a5340ec92e"
-  integrity sha512-P5iTJGGLD9rqVqsNjpuCsWN1ifVoPwlhbvf+6Sl/J/o/tpYwnwDsHZiQkD72UFteV+0r0aZWvwppzLf8g9YpKw==
+sprotty-protocol@~0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/sprotty-protocol/-/sprotty-protocol-0.12.0.tgz#542eb6396a645f85f8cfc2e7ef1d9b90c7b1980b"
+  integrity sha512-vbov+XfbmSeMYb46vm6dJvK3q7YKUvg0q7JnM6H7Ca5qY8TaZCEZ5Vc8zHKFZGWchcwnQYKqLTzwDItsMikD0A==
+
+sprotty@~0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.12.0.tgz#693432346d9321bb19f368c6806641539962db99"
+  integrity sha512-0RjRn3iR9McDt+LZ+cyySfdBdWyzR4kPbg4xESumvoSPziHphs6TdM7CvJ9ywTMmG131nKUF6GgbzhQZ+L6cGg==
   dependencies:
-    autocompleter "5.1.0"
-    file-saver "2.0.2"
-    inversify "5.0.1"
-    snabbdom "0.7.3"
-    snabbdom-jsx "0.4.2"
-    snabbdom-virtualize "0.7.0"
+    "@vscode/codicons" "^0.0.25"
+    autocompleter "^5.1.0"
+    file-saver "^2.0.2"
+    inversify "^5.1.1"
+    snabbdom "^3.0.3"
+    sprotty-protocol "~0.12.0"
+    tinyqueue "^2.0.3"
 
 supports-color@^5.3.0:
   version "5.5.0"
@@ -273,6 +258,11 @@ supports-color@^5.3.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
+
+tinyqueue@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tinyqueue/-/tinyqueue-2.0.3.tgz#64d8492ebf39e7801d7bd34062e29b45b2035f08"
+  integrity sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==
 
 tslib@^1.10.0, tslib@^1.8.1:
   version "1.11.0"
@@ -309,11 +299,6 @@ typescript@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.2.tgz#91d6868aaead7da74f493c553aeff76c0c0b1d5a"
   integrity sha512-EgOVgL/4xfVrCMbhYKUQTdF37SQn4Iw73H5BgCrF1Abdun7Kwy/QZsE/ssAy0y4LxBbvua3PIbFsbRczWWnDdQ==
-
-void-elements@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
-  integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
 wrappy@1:
   version "1.0.2"

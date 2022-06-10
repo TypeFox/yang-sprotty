@@ -10,7 +10,7 @@
     "diagram"
   ],
   "dependencies": {
-    "sprotty": "~0.11.1"
+    "sprotty": "~0.12.0"
   },
   "scripts": {
     "prepare": "yarn run clean && yarn build",

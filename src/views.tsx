@@ -7,10 +7,10 @@
  */
 
 /** @jsx svg */
-import { svg } from 'snabbdom-jsx';
+import { svg } from 'sprotty';
 import { injectable } from 'inversify';
 import { RenderingContext, SEdge, SCompartment, PolylineEdgeView, Point, toDegrees, IView, setAttr } from "sprotty"
-import { VNode } from "snabbdom/vnode"
+import { VNode } from "snabbdom"
 import { YangNode, ModuleNode, Tag } from "./yang-models"
 
 @injectable()
